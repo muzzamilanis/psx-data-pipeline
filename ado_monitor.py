@@ -64,7 +64,7 @@ class AzureDevOpsMonitor:
         self.last_checked_merge_time = self._load_last_checked_merge_time()
         
         # Path to your health check agent
-        self.health_check_script = "System-Health-Check-Agent.py"
+        self.health_check_script = "System_Health_Check_Agent.py"
         
         logger.info("="*70)
         logger.info("Azure DevOps Monitor Initialized")
