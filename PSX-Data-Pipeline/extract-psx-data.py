@@ -258,7 +258,7 @@ def fetch_and_push():
     log.debug("[INSERT] Last  tuple: %s", values[-1] if values else "—")
 
     col_list   = ", ".join(f'"{c}"' for c in columns)
-    insert_sql = f'INSERT INTO "{TABLE_NAME}" ({col_list}) VALUES %s'
+    insert_sql = f'INSERT INTO "{TABLE_NAME}" ({col_list}) VALUES %s ON CONFLICT DO NOTHING'
     log.debug("[INSERT] SQL template: %s", insert_sql)
 
     try:
