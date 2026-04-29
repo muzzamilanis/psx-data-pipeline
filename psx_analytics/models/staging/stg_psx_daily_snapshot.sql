@@ -14,7 +14,11 @@ with cleaned as (
         replace(trim(idx_point), ',', '')   as idx_point_clean,
         replace(trim(volume), ',', '')      as volume_clean,
         replace(trim(shares_m), ',', '')    as shares_clean,
-        replace(trim(market_cap_m), ',', '') as market_cap_clean
+        replace(trim(market_cap_m), ',', '') as market_cap_clean,
+        row_number() over (
+            partition by fetched_at, symbol 
+            order by id desc
+        ) as rn
     from {{ source('raw', 'PsxAllShr') }}
 )
 
@@ -33,3 +37,4 @@ select
     nullif(shares_clean, '')::numeric       as shares_m,
     nullif(market_cap_clean, '')::numeric   as market_cap_m
 from cleaned
+where rn = 1
