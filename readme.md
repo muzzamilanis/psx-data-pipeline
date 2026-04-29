@@ -13,6 +13,9 @@ PSX Website → Python Scraper → PostgreSQL Bronze Layer (PsxAllShr)
                           ↓                                   ↓
                mart_top_movers (Gold)          mart_sector_summary (Gold)
 ```
+---
+
+📖 **Read the full article:** [Building a PSX Data Pipeline: How I got introduced to dbt](https://dev.to/muzzamilanis/building-a-psx-data-pipeline-how-i-get-introduced-to-dbt-2l22)
 
 ## Tech Stack
 
