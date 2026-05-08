@@ -1,9 +1,0 @@
-version: 2
-
-sources:
-  - name: raw
-    database: PsxDataLake
-    schema: public
-    tables:
-      - name: PsxAllShr
-        description: "Raw PSX daily snapshot data ingested from scraper"
