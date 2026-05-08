@@ -304,27 +304,6 @@ def fetch_and_push():
     log.info("=" * 60)
 
 
-def run_dbt():
-    log.info("[DBT] Starting dbt run...")
-    dbt_project_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "psx_analytics")
-    dbt_executable = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".venv", "Scripts", "dbt.exe")
-    
-    try:
-        result = subprocess.run(
-            [dbt_executable, "run", "--project-dir", dbt_project_path, "--profiles-dir", os.path.expanduser("~/.dbt")],
-            capture_output=True,
-            text=True
-        )
-        if result.returncode == 0:
-            log.info("[DBT] dbt run completed successfully")
-            log.debug("[DBT] Output: %s", result.stdout)
-        else:
-            log.error("[DBT] dbt run failed: %s", result.stderr)
-    except Exception as exc:
-        log.error("[DBT] Failed to execute dbt: %s", exc)
-
-
 # ── Entry point ───────────────────────────────────────────────────────────────
 
 fetch_and_push()
-run_dbt()
